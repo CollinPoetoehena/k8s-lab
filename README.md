@@ -20,3 +20,4 @@ This repo serves two goals:
 Other projects can reference this lab to get their infra ready, then deploy their workloads on top of it without worrying about cluster setup or platform tooling.
 
 ## TODO: further make the details later, such as design, etc., this can be in /docs folder and then referenced below in this README.md as TOC
+TODO: for reflection add learning goals of learning K8s, more about networking, infrastructure, etc.

@@ -1,0 +1,2 @@
+# Templates
+This folder contains various templates that can be used for documentation, reports, and presentations. Each template is designed to provide a consistent structure and style, making it easier to create professional-looking documents.
