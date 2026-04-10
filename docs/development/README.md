@@ -19,7 +19,6 @@ rm -rf ~/.azure
 # This script ensures the Terraform variables required are loaded into the current shell session, such as:
 ./scripts/infra/export_sensitive_tfvars.sh --ssh-key ~/.ssh/id_k8slab.pub
 ```
-TODO: later add keys in KeyVault and get them from there automatically, etc.
 
 Then you can use Terraform to create the infrastructure:
 ```sh
