@@ -1,12 +1,12 @@
 # ADR-TLS-002: Ansible for Configuration Management
 
-**Date:** 2026-02-06
+**Date:** 2026-04-10
 **Status:** Accepted
 **Deciders:** CollinPoetoehena
 
 ## Context and Problem Statement
 
-The TransacFlow project requires a configuration management solution for automating the setup and maintenance of infrastructure after provisioning. The configuration management tool should:
+The project requires a configuration management solution for automating the setup and maintenance of infrastructure after provisioning. The configuration management tool should:
 - Automate installation and configuration of software packages and services
 - Manage system configurations consistently across multiple servers
 - Enable repeatable, version-controlled infrastructure configuration
@@ -18,7 +18,7 @@ The TransacFlow project requires a configuration management solution for automat
 
 ## Decision
 
-We will use **Ansible** as the configuration management tool for automating infrastructure configuration, software installation, and ongoing maintenance tasks in the TransacFlow project.
+We will use **Ansible** as the configuration management tool for automating infrastructure configuration, software installation, and ongoing maintenance tasks in the project.
 
 Ansible playbooks will be written in YAML to define configuration tasks, with inventory files managing target hosts. Ansible will be used primarily for Kubernetes cluster setup and configuration using Kubeadm, system hardening, and application deployment automation.
 
@@ -52,7 +52,7 @@ Ansible playbooks will be written in YAML to define configuration tasks, with in
 
 1. **Chef:** Powerful configuration management tool using Ruby DSL. Rejected because it requires agents on all managed nodes (Chef Client), has a steeper learning curve with Ruby-based recipes, and introduces additional operational complexity. The agent-based architecture adds maintenance overhead that Ansible's agentless approach avoids.
 
-2. **Puppet:** Mature configuration management tool with declarative language. Rejected due to agent requirement (Puppet Agent), complex proprietary DSL that's harder to learn than YAML, and the need for a central Puppet Master server. While excellent for large enterprises, it's overly complex for TransacFlow's requirements.
+2. **Puppet:** Mature configuration management tool with declarative language. Rejected due to agent requirement (Puppet Agent), complex proprietary DSL that's harder to learn than YAML, and the need for a central Puppet Master server. While excellent for large enterprises, it's overly complex for the project's requirements.
 
 3. **SaltStack:** Fast configuration management with event-driven architecture. While performant, it requires agents (Salt Minions) on target nodes and has a smaller community compared to Ansible. The additional complexity of master-minion architecture and ZeroMQ communication is unnecessary for our use case.
 
@@ -64,8 +64,7 @@ Ansible playbooks will be written in YAML to define configuration tasks, with in
 
 ## Related Decisions
 
-- [ADR-PLT-001: Kubernetes for Microservices Deployment and Orchestration](../infra/platform/ADR-PLT-001-K8s_General_Usage.md)
-- [ADR-TLS-001: Terraform for Infrastructure as Code](ADR-TLS-001-IaC.md)
+- [ADR-PLT-002: Kubernetes Setup using Kubeadm and Ansible](../platform/ADR-PLT-002-K8s.md)
 
 ## References
 

@@ -1,6 +1,6 @@
 # ADR-TLS-003: Monitoring and Observability Stack
 
-**Date:** 2026-02-19
+**Date:** 2026-04-10
 **Status:** Accepted
 **Deciders:** CollinPoetoehena
 
@@ -105,7 +105,7 @@ This stack provides the three pillars of observability (metrics, logs, traces) w
 
 3. **New Relic:** Commercial APM (Application Performance Monitoring) and observability platform. Similar to Datadog, rejected due to cost concerns and preference for open-source solutions that provide more flexibility and learning opportunities.
 
-4. **Splunk:** Enterprise log management and SIEM (Security Information and Event Management) platform. Rejected due to extremely high licensing costs, complexity, and overkill for TransacFlow's requirements. Splunk is designed for large enterprises with compliance and security needs beyond this project's scope.
+4. **Splunk:** Enterprise log management and SIEM (Security Information and Event Management) platform. Rejected due to extremely high licensing costs, complexity, and overkill for the project's requirements. Splunk is designed for large enterprises with compliance and security needs beyond this project's scope.
 
 5. **AWS CloudWatch / Azure Monitor / GCP Cloud Monitoring:** Cloud provider native monitoring. Rejected to maintain cloud portability and avoid vendor lock-in. Cloud-native monitoring ties infrastructure to specific providers and limits flexibility for hybrid or multi-cloud deployments.
 
@@ -117,7 +117,7 @@ This stack provides the three pillars of observability (metrics, logs, traces) w
 
 ## Related Decisions
 
-- [ADR-PLT-001: Kubernetes for Microservices Deployment and Orchestration](../infra/platform/ADR-PLT-001-K8s_General_Usage.md)
+- [ADR-PLT-002: Kubernetes Setup using Kubeadm and Ansible](../platform/ADR-PLT-002-K8s.md)
 
 ## References
 

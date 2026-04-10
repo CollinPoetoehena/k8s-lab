@@ -66,9 +66,8 @@ This approach provides complete control over the Kubernetes control plane and wo
 
 ## Related Decisions
 
-- [ADR-PLT-001: Kubernetes for Microservices Deployment and Orchestration](ADR-PLT-001-K8s_General_Usage.md)
-- [ADR-PLT-002: Local Kubernetes Setup](./ADR-PLT-002-Local.md)
-- [Environments used (e.g. Local, DTA, Production)](../../Environments.md)
+- [ADR-PLT-001: Environment Strategy](./ADR-PLT-001-Environments.md)
+- [ADR-TLS-002: Ansible for Configuration Management](../tools/ADR-TLS-002-ConfigurationManagement.md)
 
 ## References
 

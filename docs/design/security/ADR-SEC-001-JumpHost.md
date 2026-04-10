@@ -63,10 +63,9 @@ The jump host is provisioned via Terraform and configured via the Ansible `jump_
 
 ## Related Decisions
 
+- [ADR-PLT-001: Environment Strategy](../platform/ADR-PLT-001-Environments.md)
 - [ADR-SEC-002: Network Segmentation](ADR-SEC-002-NetworkSegmentation.md)
-- [ADR-PLT-003: Production & DTA Environment](../infra/platform/ADR-PLT-003-Production-DTA.md)
-- [ADR-IaC-004: Terraform for Infrastructure as Code](../tools/ADR-004-IaC.md)
-- [ADR-005: Ansible for Configuration Management](../tools/ADR-005-ConfigurationManagement.md)
+- [ADR-TLS-002: Ansible for Configuration Management](../tools/ADR-TLS-002-ConfigurationManagement.md)
 
 ## References
 

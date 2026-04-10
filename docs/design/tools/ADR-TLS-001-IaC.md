@@ -1,12 +1,12 @@
 # ADR-TLS-001: Terraform for Infrastructure as Code
 
-**Date:** 2026-02-06
+**Date:** 2026-04-10
 **Status:** Accepted
 **Deciders:** CollinPoetoehena
 
 ## Context and Problem Statement
 
-The TransacFlow project requires a robust Infrastructure as Code (IaC) solution for provisioning and managing infrastructure resources such as virtual machines, networks, storage, load balancers, configurations, etc. The IaC tool should:
+The project requires a robust Infrastructure as Code (IaC) solution for provisioning and managing infrastructure resources such as virtual machines, networks, storage, load balancers, configurations, etc. The IaC tool should:
 - Support multiple cloud providers to avoid vendor lock-in
 - Enable declarative infrastructure definitions with version control
 - Provide state management for tracking infrastructure changes
@@ -16,7 +16,7 @@ The TransacFlow project requires a robust Infrastructure as Code (IaC) solution 
 
 ## Decision
 
-We will use **Terraform** as the primary Infrastructure as Code tool for provisioning and managing infrastructure resources in the TransacFlow project.
+We will use **Terraform** as the primary Infrastructure as Code tool for provisioning and managing infrastructure resources in the project.
 
 Terraform's HashiCorp Configuration Language (HCL) will be used for infrastructure definitions. State can optionally be stored in a remote backend (e.g., S3, Azure Blob Storage, or Terraform Cloud) for team collaboration and consistency.
 
@@ -47,7 +47,7 @@ Terraform's HashiCorp Configuration Language (HCL) will be used for infrastructu
 
 ## Alternatives Considered
 
-1. **Azure Bicep:** Microsoft's domain-specific language (DSL) for Azure resources. Rejected because it only supports Azure (vendor lock-in), limiting flexibility for multi-cloud or cloud migration scenarios. While it has excellent Azure integration, TransacFlow requires cloud-agnostic infrastructure tooling for potential future cloud provider changes.
+1. **Azure Bicep:** Microsoft's domain-specific language (DSL) for Azure resources. Rejected because it only supports Azure (vendor lock-in), limiting flexibility for multi-cloud or cloud migration scenarios. While it has excellent Azure integration, the project requires cloud-agnostic infrastructure tooling for potential future cloud provider changes.
 
 2. **AWS CloudFormation:** AWS-native IaC service with deep AWS integration. Rejected for the same vendor lock-in concerns as Bicep. Limited to AWS ecosystem and uses verbose JSON/YAML syntax. Not suitable for multi-cloud infrastructure needs.
 
@@ -61,7 +61,7 @@ Terraform's HashiCorp Configuration Language (HCL) will be used for infrastructu
 
 ## Related Decisions
 
-- [ADR-PLT-001: Kubernetes for Microservices Deployment and Orchestration](../infra/platform/ADR-PLT-001-K8s_General_Usage.md)
+- [ADR-PLT-002: Kubernetes Setup using Kubeadm and Ansible](../platform/ADR-PLT-002-K8s.md)
 - [ADR-TLS-002: Ansible for Configuration Management](ADR-TLS-002-ConfigurationManagement.md)
 
 ## References

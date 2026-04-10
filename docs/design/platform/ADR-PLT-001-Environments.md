@@ -1,23 +1,52 @@
-# Environments
+# ADR-PLT-001: Environment Strategy
 
-This project uses two environments that reflect a real-world software delivery pipeline: DTA and Production. The structure is intentionally modelled after how professional engineering teams operate, to build familiarity with industry-standard practices around environment separation, promotion workflows, and infrastructure consistency, etc.
+**Date:** 2026-04-10  
+**Status:** Accepted  
+**Deciders:** CollinPoetoehena
 
-## DTA (Development, Test, Acceptance)
+## Context and Problem Statement
 
-The DTA environment is a scaled-down mirror of production. It exists to mimic real-world delivery pipelines, where changes are validated in a production-like environment (or multiple environments, depending on the criticality of the system) before being promoted. In professional settings, DTA stages are often separate environments — each with its own dedicated infrastructure, access controls, and promotion gates. Having distinct Development, Test, and Acceptance environments allows teams to isolate concerns: development builds are tested in isolation, integration testing happens in a shared test environment, and acceptance testing validates the release candidate against business requirements before going live.
+This project needs an environment structure that reflects a real-world software delivery pipeline, while remaining practical to operate solo on constrained resources. The question is how many environments to maintain, how they should differ from each other, and whether they should run concurrently or on-demand.
 
-However, because this is a learning project, maintaining fully separate environments for each DTA stage is not necessary or practical. The overhead of operating three independent environments would outweigh the learning value at this stage. Instead, a single shared DTA environment is used that serves all three purposes. This still captures the core intent — infrastructure that closely mirrors production in design and network topology, etc., just scaled down in resources (e.g., fewer VMs, smaller node pools) to keep everything manageable and iteration fast.
+In professional engineering teams, a typical pipeline includes separate Development, Test, Acceptance, and Production environments. Each stage has dedicated infrastructure, isolated access controls, and defined promotion gates. This separation reduces deployment risk and increases confidence that changes behave correctly before reaching production.
 
-The important takeaway is the *why* behind the pattern: environment separation exists to reduce risk, increase confidence in deployments, and catch issues before they reach production. This is a fundamental principle of software delivery that transcends specific tools or platforms. By following this pattern, even in a simplified form, it mimics real-world practices and improves reliability.
+For a learning project, the challenge is balancing fidelity to real-world patterns against the overhead of operating and maintaining multiple full environments.
 
-## Production
+## Decision
 
-The production environment is the real, fully scaled deployment of the system. It is optimized for performance, reliability, and security within the constraints of the platform used. Changes only reach production after being validated in DTA, reflecting the same promotion discipline used in professional engineering teams.
+Use two logically separate environments — **DTA** and **Production** — where DTA is a single shared environment that consolidates the Development, Test, and Acceptance stages.
 
-## Concurrency of Environments
+- **DTA** mirrors Production in design and network topology but is scaled down in resources (fewer VMs, smaller node pools). It serves all pre-production validation purposes.
+- **Production** is the full-scale deployment, optimized for performance, reliability, and security within the constraints of the platform. Changes only reach Production after being validated in DTA.
+- The two environments are treated as **mutually exclusive in terms of concurrency**: only one is active at a given time due to resource constraints. DTA is spun up for development and testing, torn down when work is promoted or paused, and Production is brought up separately for release validation or demonstration.
 
-Due to resource constraints, not all environments run simultaneously. In practice, only one of DTA or Production is active at any given time.
+## Consequences
 
-This is a deliberate trade-off. In a professional setting, DTA and Production would run in parallel continuously, allowing teams to develop and test against DTA while production serves live traffic. Here, the two are treated as mutually exclusive: DTA is brought up for development and testing, then torn down when work is promoted or paused, and Production is spun up separately when validating a release or demonstrating the system.
+**Positive:**
+- Mirrors industry-standard promotion discipline (DTA → Production) without the full operational overhead
+- Infrastructure-as-code makes spinning environments up and down on demand straightforward
+- Keeps resource usage manageable for a solo learning project
+- Still captures the core intent: environment separation to reduce risk and increase deployment confidence
 
-This pattern is still realistic — many teams spin environments up and down dynamically, especially in cloud-native setups where infrastructure-as-code makes it easy to provision and destroy on demand. The key discipline being practiced here is that the environments remain logically separate and follow the same promotion flow, even if they don't coexist at all times (this mimics the concepts without having the ongoing management/cost of the two environments, which is feasible in this case since it is a learning project).
+**Negative:**
+- DTA and Production do not run in parallel, which diverges from real-world continuous delivery setups where both coexist at all times
+- A single shared DTA environment cannot fully replicate the isolation benefits of separate Development, Test, and Acceptance stages
+
+**Neutral:**
+- The pattern of dynamic environment provisioning/teardown is itself a realistic cloud-native practice, so the trade-off is still educational
+
+## Alternatives Considered
+
+1. **Fully separate DTA stages (Dev, Test, Acceptance + Production):** Closer to enterprise practice but operationally excessive for a solo learning project; the overhead of managing four environments would detract from the learning goals.
+2. **Single environment for everything:** Simpler to operate but eliminates the promotion discipline and environment separation concepts entirely — counter to the project's learning goals.
+3. **Persistent concurrent DTA + Production:** More realistic, but resource constraints make this impractical. The on-demand approach is a fair compromise.
+
+## Related Decisions
+
+- None yet
+
+## References
+
+- [The Twelve-Factor App](https://github.com/twelve-factor/twelve-factor)
+- [The Twelve-Factor App — Dev/prod parity](https://github.com/twelve-factor/twelve-factor/blob/next/content/dev-prod-parity.md)
+- General industry practice: DTA/DTAP pipeline patterns in enterprise software delivery

@@ -1,6 +1,6 @@
 # ADR-SEC-002: Network Segmentation
 
-**Date:** 2026-02-19
+**Date:** 2026-04-10
 **Status:** Accepted
 **Deciders:** CollinPoetoehena
 
@@ -117,7 +117,7 @@ The Terraform configuration provisions the Hub VNet with subnets using the `vnet
 ## Related Decisions
 
 - [ADR-SEC-001: Jump Host for Secure Infrastructure Access](ADR-SEC-001-JumpHost.md)
-- [ADR-PLT-001: Kubernetes for Microservices Deployment and Orchestration](../infra/platform/ADR-PLT-001-K8s_General_Usage.md)
+- [ADR-PLT-002: Kubernetes Setup using Kubeadm and Ansible](../platform/ADR-PLT-002-K8s.md)
 - [ADR-IaC-004: Terraform for Infrastructure as Code](../tools/ADR-004-IaC.md)
 
 ## References
