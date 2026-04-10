@@ -1,0 +1,11 @@
+---
+# tasks file for roles/local
+
+# TODO: Implement tasks for local environment setup
+# This should include:
+# - Install Docker (apt-get with Docker's official repo)
+# - Install kind
+# - Create the local kind cluster (local_cluster_name)
+# - Install kubectl and configure kubeconfig
+# - Install helm
+# - Validate cluster is healthy (kubectl get nodes)

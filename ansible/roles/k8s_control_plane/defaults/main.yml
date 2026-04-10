@@ -1,0 +1,10 @@
+---
+# defaults file for roles/k8s_control_plane
+
+# Controller manager extra args
+controller_manager_extra_args:
+  node-cidr-mask-size: "24"
+
+# High availability
+ha_cluster: true
+control_plane_nodes_count: 3

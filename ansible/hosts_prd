@@ -1,0 +1,2 @@
+# TODO: make a hosts directory or something that is best practice for Ansible instead of in the root here!
+TODO: how to generate inventory automatically from Terraform output?!?!

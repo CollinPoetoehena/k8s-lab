@@ -1,0 +1,3 @@
+# This is just for localhost, see Environments.md in the /docs/design folder for more details
+[all_servers]
+localhost ansible_connection=local

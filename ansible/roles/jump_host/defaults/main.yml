@@ -1,0 +1,21 @@
+---
+# defaults file for roles/jump_host
+
+# SSH configuration
+jump_host_ssh_keys_path: "/home/ansible/.ssh"
+ssh_port: 22
+# Required for Ansible control node to access cluster nodes via jump host
+enable_ssh_agent_forwarding: true
+
+# Bastion security
+ssh_max_sessions: 10
+ssh_login_grace_time: 60
+ssh_max_auth_tries: 3
+
+# Firewall rules
+# TODO: Restrict this more?!?!
+allow_ssh_from_cidr: "0.0.0.0/0"
+
+# Logging and auditing
+enable_ssh_audit_logging: true
+audit_log_path: "/var/log/ssh-audit.log"

@@ -1,0 +1,22 @@
+---
+# defaults file for roles/local
+
+# kind cluster
+local_cluster_name: "transacflow-local"
+kind_version: "0.22.0"
+
+# kubectl
+kubectl_version: "1.28.0"
+kubeconfig_path: "~/.kube/config"
+kubeconfig_dir: "~/.kube"
+
+# Helm
+helm_version: "3.13.0"
+
+# Docker
+docker_packages:
+  - docker-ce
+  - docker-ce-cli
+  - containerd.io
+  - docker-buildx-plugin
+  - docker-compose-plugin

@@ -1,0 +1,31 @@
+---
+# defaults file for roles/k8s_worker
+
+# Node configuration
+node_labels:
+  node-role.kubernetes.io/worker: "worker"
+  workload-type: "general"
+  environment: "production"
+
+node_taints: []  # Example: - key: "dedicated", value: "special", effect: "NoSchedule"
+
+# Kubelet configuration
+kubelet_extra_args:
+  node-status-update-frequency: "10s"
+  image-pull-progress-deadline: "2m"
+  max-pods: "110"
+
+# Resource reservation
+system_reserved:
+  cpu: "200m"
+  memory: "512Mi"
+  ephemeral-storage: "1Gi"
+
+kube_reserved:
+  cpu: "200m"
+  memory: "512Mi"
+  ephemeral-storage: "1Gi"
+
+# Monitoring
+install_node_exporter: true
+node_exporter_version: "1.7.0"

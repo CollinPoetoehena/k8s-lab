@@ -1,0 +1,8 @@
+galaxy_info:
+  author: CollinPoetoehena
+  description: Local development environment role — sets up kind, kubectl, helm, etc. on localhost.
+  company: TransacFlow
+  license: MIT
+  min_ansible_version: 2.9
+  platforms:
+    - name: Ubuntu # Local development is done on Ubuntu (EL requires a license, so we can't use it for the local role)

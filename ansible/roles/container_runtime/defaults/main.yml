@@ -1,0 +1,29 @@
+---
+# defaults file for roles/container_runtime
+
+# Container runtime choice
+container_runtime: "containerd"  # Options: "containerd" or "crio"
+
+# Containerd version
+containerd_version: "1.7.11"
+
+# Cgroup driver
+cgroup_driver: "systemd"  # Options: "systemd" or "cgroupfs"
+
+# Container registries
+container_registries:
+  - "https://registry-1.docker.io"
+  - "https://myacr.azurecr.io"
+# TODO: add registry from TrasacFlow here later
+
+# Registry authentication (optional)
+# TODO: how to authenticate to registry, per node or centrally in the k8s cluster, think about that.
+# TODO: also how to do this securely, not in the Ansible vault here right? Maybe via GitHub Actions secrets?
+registry_credentials:
+  - registry: "myacr.azurecr.io"
+    username: "{{ vault_acr_username }}"
+    password: "{{ vault_acr_password }}"
+
+# Runtime configuration
+max_container_log_size: "10Mi"
+max_container_log_files: 5

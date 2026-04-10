@@ -1,0 +1,12 @@
+---
+# tasks file for roles/mgmt_vm
+
+# TODO: Implement tasks for management VM configuration
+# This should include:
+# - Installing kubectl, kubeadm, helm
+# - Installing Azure CLI
+# - Installing Ansible and Python dependencies
+# - Installing development and debugging tools
+# - Configuring SSH keys for cluster access
+# - Creating kubeconfig directory structure
+# - Setting up shell completions for kubectl and helm

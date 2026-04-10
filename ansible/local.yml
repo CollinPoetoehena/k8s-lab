@@ -1,0 +1,7 @@
+# local.yml
+- name: Set up local development environment
+  hosts: localhost
+  become: true
+  roles:
+    - role: common          # Reuse: installs base tooling
+    - role: local       # New: installs minikube/kind + kubectl + helm

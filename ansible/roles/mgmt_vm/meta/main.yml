@@ -1,0 +1,9 @@
+---
+galaxy_info:
+  author: CollinPoetoehena
+  description: Management VM role for Kubernetes cluster operations
+  company: TransacFlow
+  license: MIT
+  min_ansible_version: 2.9
+  platforms:
+    - name: EL # EL for Enterprise Linux (RHEL, CentOS, AlmaLinux, Rocky Linux, etc., but mainly RHEL)

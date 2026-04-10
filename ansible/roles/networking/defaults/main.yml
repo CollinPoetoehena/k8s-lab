@@ -1,0 +1,22 @@
+---
+# defaults file for roles/networking
+
+# CNI plugin
+cni_plugin: "calico"  # Options: calico, cilium, flannel
+# Calico specific
+calico_version: "3.27.0"
+calico_backend: "vxlan"  # Options: vxlan, ipip, bird
+calico_ipv4pool_cidr: "{{ pod_network_cidr }}"
+calico_network_policy_enabled: true
+calico_encryption_enabled: false
+
+# Network plugin socket
+cni_bin_dir: "/opt/cni/bin"
+cni_conf_dir: "/etc/cni/net.d"
+
+# Network policies
+enable_network_policies: true
+default_deny_all_policy: false  # Start with deny-all policy
+
+# MTU configuration (important for overlay networks)
+network_mtu: 1450  # Reduced for VXLAN overhead
